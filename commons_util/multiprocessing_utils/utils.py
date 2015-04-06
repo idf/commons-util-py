@@ -1,5 +1,7 @@
 __author__ = 'Danyang'
 from multiprocessing import Value
+
+
 class Counter(object):
     def __init__(self):
         self.val = Value('i', 0)
