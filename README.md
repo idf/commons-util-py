@@ -16,6 +16,10 @@ git subtree pull --prefix util util develop --squash
 git subtree push --prefix util util develop 
 ```
 
+Use as standalone project:
+* Add parent folder of util to `PYTHONPATH`
+* Or Wrap a dummy folder around the project root 
+
 # Interface
 Compile-time enforcement of interface specifications helps in the construction of large programs. In Python you have to 
 write more tests. An appropriate testing discipline can help build large complex applications in Python as well as 

@@ -1,6 +1,6 @@
 import random
 from unittest import TestCase
-from commons_util.fundamentals.data_structs import *
+from util.commons_util.fundamentals.data_structs import *
 __author__ = 'Danyang'
 
 
