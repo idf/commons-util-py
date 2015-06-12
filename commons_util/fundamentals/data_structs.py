@@ -28,9 +28,9 @@ class ExcelColumn(object):
         self.cur = []
 
     def _plus(self, cur, idx):
-        if idx>=len(cur):
+        if idx >= len(cur):
             cur.append('a')
-        elif cur[idx]<'z':
+        elif cur[idx] < 'z':
             cur[idx] = chr(ord(cur[idx])+1)
         else:
             cur[idx] = 'a'
@@ -80,11 +80,11 @@ class Searcher(object):
         :param predicate: need closure
         :return:
         """
-        while low<up:
+        while low < up:
             m = (low+up)/2
-            if predicate(m)<0:
+            if predicate(m) < 0:
                 low = m+1
-            elif predicate(m)>0:
+            elif predicate(m) > 0:
                 up = m
             else:
                 return m
@@ -108,3 +108,21 @@ class Wrapper(object):
         :return:
         """
         return zip(*lst)
+
+
+class TwoWay(object):
+    def __init__(self):
+        """
+        Reversable 1:1 mapping of keys to values
+        """
+        self.d = {}
+
+    def add(self, k, v):
+        self.d[k] = v
+        self.d[v] = k
+
+    def remove(self, k):
+        self.d.pop(self.d.pop(k))
+
+    def get(self, k):
+        return self.d[k]

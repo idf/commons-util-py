@@ -1,6 +1,8 @@
-__author__ = 'Danyang'
 import os
 import re
+__author__ = 'Danyang'
+
+
 class FileUtils(object):
     @classmethod
     def rename(cls):
@@ -17,6 +19,7 @@ class FileUtils(object):
                     f1 = m.group("time")
                     os.rename(f, f1)
                     print "%s -> %s" % (f, f1)
+
 
 class CmdUtils(object):
     @classmethod

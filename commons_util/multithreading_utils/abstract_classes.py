@@ -1,10 +1,11 @@
 __author__ = 'Danyang'
 import threading
-from decorators.classes import *
+from util.decorators.classes import *
 
 
 def print_msg(name, msg):
     print "%s says: %s" % (name, msg)
+
 
 class AbstractThread(threading.Thread):
     @Override(threading.Thread)
