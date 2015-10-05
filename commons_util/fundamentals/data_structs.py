@@ -1,5 +1,6 @@
 import json
 import itertools
+from operator import itemgetter
 
 __author__ = 'Danyang'
 
@@ -46,6 +47,9 @@ class ExcelColumn(object):
         for i in xrange(n):
             self._plus(self.cur, 0)
             yield ''.join(reversed(self.cur))
+
+    def sort_dict_by_value(self, d, reverse=False):
+        return sorted(self.d.items(), key=itemgetter(1), reverse=reverse)
 
 
 class Displayer(object):
