@@ -1,3 +1,4 @@
+from collections import defaultdict
 import json
 import itertools
 from operator import itemgetter
@@ -130,3 +131,8 @@ class TwoWay(object):
 
     def get(self, k):
         return self.d[k]
+
+
+class NestedDefaultDict(object):
+    def default_default_dict(self):
+        return defaultdict(lambda : defaultdict(int))
