@@ -1,4 +1,5 @@
 import abc
+from weakref import WeakKeyDictionary
 
 __author__ = 'Daniel'
 
@@ -23,6 +24,7 @@ class Resistor(object):
 
 
 class VoltageResistance(Resistor):
+    """Usage of @property"""
     def __init__(self, ohms):
         super(VoltageResistance, self).__init__(ohms)
         self._voltage = 0
@@ -35,3 +37,18 @@ class VoltageResistance(Resistor):
     def voltage(self, voltage):
         self._voltage = voltage
         self.current = self._voltage / self.ohms
+
+
+class GradeDescriptor(object):
+    def __init__(self):
+        self._values = WeakKeyDictionary()
+        # gc when holding the instance's last remaining reference
+
+    def __get__(self, instance, instance_type):
+        if instance is None: return self
+        return self._values.get(instance, 0)
+
+    def __set__(self, instance, value):
+        if not (0 <= value <= 100):
+            raise ValueError("Grade must be between 0 and 100")
+        self._values[instance] = value

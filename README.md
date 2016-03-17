@@ -1,6 +1,8 @@
 # commons-util-py
 Common util functions for Python
 
+`dict` tries to encompass everything in Python. 
+
 
 # Usage
 Note to rename the root folder to `util`  
