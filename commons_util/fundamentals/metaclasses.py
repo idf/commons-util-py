@@ -30,3 +30,23 @@ class MyClass(object):
 
     def foo_method(self):
         pass
+
+
+# Registry
+
+registry = {}
+
+
+def register_class(target_class):
+    registry[target_class.__name__] = target_class
+
+
+class RegistryMeta(type):
+    def __new__(mcs, name, bases, class_dict):
+        cls = type.__new__(mcs, name, bases, class_dict)
+        register_class(cls)
+        return cls
+
+
+class RegisteredClass(object):
+    __metaclass__ = RegistryMeta
