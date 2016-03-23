@@ -136,3 +136,16 @@ class TwoWay(object):
 class NestedDefaultDict(object):
     def default_default_dict(self):
         return defaultdict(lambda : defaultdict(int))
+
+
+class Counter(object):
+    """
+    Replace stateful closure
+    Passing object method as interface rather than the class
+    """
+    def __init__(self):
+        self.counter = 0
+
+    def __call__(self):
+        self.counter += 1
+        return 0

@@ -1,3 +1,6 @@
+"""
+Prefer `yield` over returning a ret, where ret = []
+"""
 __author__ = 'Danyang'
 
 

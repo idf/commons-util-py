@@ -1,4 +1,7 @@
+import json
+
 __author__ = 'Daniel'
+
 
 class ToDictMixin(object):
     def to_dict(self):
@@ -21,3 +24,16 @@ class ToDictMixin(object):
             return self._traverse_dict(value.__dict__)
         else:
             return value
+
+
+class JsonMixin(object):
+    """
+    Require ToDictMixin
+    """
+    @classmethod
+    def from_json(cls, data):
+        kwargs = json.loads(data)
+        return cls(**kwargs)
+
+    def to_json(self):
+        return json.dumps(self.to_dict())
