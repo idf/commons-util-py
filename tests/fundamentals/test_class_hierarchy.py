@@ -27,4 +27,3 @@ class TestDescriptor(TestCase):
         exam2.science_grade = 100
         self.assertEquals(exam1.science_grade, 99)
         self.assertEquals(exam2.science_grade, 100)
-        
