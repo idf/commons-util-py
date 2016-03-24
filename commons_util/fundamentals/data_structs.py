@@ -20,6 +20,10 @@ class Sorter(object):
             f = lambda k: A[k]
         return sorted(range(n), key=f)
 
+    @staticmethod
+    def sort_dict_by_value(dic, reverse=False):
+        return sorted(dic.items(), key=itemgetter(1), reverse=reverse)
+
 
 class ExcelColumn(object):
     def __init__(self):
@@ -48,9 +52,6 @@ class ExcelColumn(object):
         for i in xrange(n):
             self._plus(self.cur, 0)
             yield ''.join(reversed(self.cur))
-
-    def sort_dict_by_value(self, d, reverse=False):
-        return sorted(self.d.items(), key=itemgetter(1), reverse=reverse)
 
 
 class Displayer(object):
