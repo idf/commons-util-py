@@ -4,6 +4,7 @@ require overriding methods, or have strict relationships between class
 attributes. Metaclasses enable these use cases by providing a reliable way to
 run your validation code each time a new subclass is defined.
 """
+import six
 
 __author__ = 'Daniel'
 
@@ -42,11 +43,15 @@ def register_class(target_class):
 
 
 class RegistryMeta(type):
+    """
+    Registry applies to database object-relationship mappings (ORMs), plug-in
+    systems, and system hooks.
+    """
     def __new__(mcs, name, bases, class_dict):
         cls = type.__new__(mcs, name, bases, class_dict)
         register_class(cls)
         return cls
 
 
-class RegisteredClass(object):
-    __metaclass__ = RegistryMeta
+class RegisteredClass(six.with_metaclass(RegistryMeta)):
+    pass
