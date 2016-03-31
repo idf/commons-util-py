@@ -1,5 +1,5 @@
 __author__ = 'Danyang'
-from multiprocessing import Value
+from multiprocessing import Value, Lock
 
 
 class Counter(object):
@@ -14,3 +14,13 @@ class Counter(object):
     def value(self):
         with self.val.get_lock():
             return self.val.value
+
+
+class LockingCounter(object):
+    def __init__(self):
+        self.lock = Lock()
+        self.count = 0
+
+    def increment(self, offset):
+        with self.lock:
+            self.count += offset
