@@ -12,4 +12,5 @@ class TestSerialization(TestCase):
         state.points += 1000
         serialized = pickle.dumps(state)
         state_after = pickle.loads(serialized)
-        print(state_after.__dict__)
+        self.assertEquals(state_after.__dict__,
+                          {'points': 1000, 'lives': 4, 'level': 0})

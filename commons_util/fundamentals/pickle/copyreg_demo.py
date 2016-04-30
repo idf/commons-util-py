@@ -9,14 +9,14 @@ class State(object):
         self.lives = lives
         self.points = points
 
-    @classmethod
-    def pickle(cls, instance):
-        kwargs = instance.__dict__
-        return cls.unpickle, (kwargs,)
 
-    @classmethod
-    def unpickle(cls, kwargs):
-        return cls(**kwargs)
+# Cannot be static method, class method
+def pickle_state(instance):
+    kwargs = instance.__dict__
+    return unpickle_state, (kwargs,)
+
+def unpickle_state(kwargs):
+    return State(**kwargs)
 
 
-copy_reg.pickle(State, State.pickle)
+copy_reg.pickle(State, pickle_state)
