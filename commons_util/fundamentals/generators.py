@@ -17,7 +17,9 @@ Generator |   ------------>  | User |
 
 # Yield & Send
 bar = yield foo
-  after yield foo, wait for send(val) to assign val to bar
+  After yield foo, wait for send(val) to assign val to bar
+  The value of the yield expression will be the value was passed to the
+  generator's send method from the exterior code.
 """
 __author__ = 'Danyang'
 
