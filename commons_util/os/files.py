@@ -1,11 +1,13 @@
 import os
 import re
+import os.path as op
+from shutil import copyfile
 __author__ = 'Danyang'
 
 
 class FileUtils(object):
-    @classmethod
-    def rename(cls):
+    @staticmethod
+    def rename():
         """
         template
         :return:
@@ -19,6 +21,24 @@ class FileUtils(object):
                     f1 = m.group("time")
                     os.rename(f, f1)
                     print "%s -> %s" % (f, f1)
+
+    @staticmethod
+    def abspath(dir, file):
+        return op.abspath(os.path.join(dir, file))
+
+    @staticmethod
+    def toplevel_subdirs(dir):
+        for item in os.listdir(dir):  # ls
+            if os.path.isdir(os.path.join(dir, item)):  # -d
+                yield item
+
+    @staticmethod
+    def cp(source, target):
+        copyfile(source, target)
+
+    @staticmethod
+    def rm(path):
+        os.remove(path)
 
 
 class CmdUtils(object):
