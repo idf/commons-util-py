@@ -2,6 +2,8 @@ import os
 import re
 import os.path as op
 from shutil import copyfile
+import shutil
+
 __author__ = 'Danyang'
 
 
@@ -37,8 +39,16 @@ class FileUtils(object):
         copyfile(source, target)
 
     @staticmethod
-    def rm(path):
+    def rmfile(path):
         os.remove(path)
+
+    @staticmethod
+    def rmdir(path):
+        os.rmdir(path)
+
+    @staticmethod
+    def rmrf(path):
+        shutil.rmtree(path)
 
 
 class CmdUtils(object):
