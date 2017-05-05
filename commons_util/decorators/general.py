@@ -44,12 +44,16 @@ def trace(func):
         ...
 
     Issue:
-      with naive decoration, the func's name will change from outside view.
+      with naive decoration, the func's name will change to the post-wrapped metadata from outside view.
+      The metadata for inner function is lost.
+      
       Using decorators can cause strange behaviors in tools that do
       introspection, such as debuggers.
     Solution:
       Applying it to the wrapper function @wraps(func) will copy all of the
-      important metadata about the inner function to the outer function.
+      important metadata about the inner function to the outer function. 
+      
+      This will make the decorator more transparent. 
     :param func:
     :return:
     """
